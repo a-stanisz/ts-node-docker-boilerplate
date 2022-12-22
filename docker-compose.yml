@@ -1,0 +1,41 @@
+services:
+  backend:
+    build:
+      context: ./
+      args:
+        - NODE_ENV=${NODE_ENV}
+      dockerfile: Dockerfile
+    ports:
+      - ${PORT}:${PORT}
+      - 9229:9229
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      PORT: ${PORT}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./src:/opt/node_app/src
+      - ./package.json:/opt/node_app/package.json
+      - ./package-lock.json:/opt/node_app/package-lock.json
+      - ./tsconfig.json:/opt/node_app/tsconfig.json
+      - notused:/opt/node_app/node_modules
+    command: ts-node-dev --respawn --inspect=0.0.0.0:9229 --transpile-only ./src/index.ts
+  db:
+    image: postgres
+    healthcheck:
+      test: pg_isready -h 127.0.0.1
+      interval: 5s
+      start_period: 10s
+      timeout: 4s
+      retries: 3
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+volumes:
+  notused:
