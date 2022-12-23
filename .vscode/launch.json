@@ -9,10 +9,7 @@
       "port": 9229,
       "address": "localhost",
       "localRoot": "${workspaceFolder}",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js",
-        "!**/node_modules/**"
-      ],
+      "outFiles": ["${workspaceFolder}/dist/**/*.js", "!**/node_modules/**"],
       "restart": true
     }
   ]
