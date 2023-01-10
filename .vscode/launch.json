@@ -7,10 +7,12 @@
       "request": "attach",
       "remoteRoot": "/opt/node_app",
       "port": 9229,
-      "address": "localhost",
+      "address": "0.0.0.0",
       "localRoot": "${workspaceFolder}",
       "outFiles": ["${workspaceFolder}/dist/**/*.js", "!**/node_modules/**"],
-      "restart": true
+      "restart": true,
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**"]
     }
   ]
 }
