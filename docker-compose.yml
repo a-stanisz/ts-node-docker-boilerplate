@@ -30,6 +30,8 @@ services:
       timeout: 4s
       retries: 3
     restart: always
+    ports:
+      - 5432:5432
     environment:
       POSTGRES_PASSWORD: example
   adminer:
