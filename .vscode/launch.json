@@ -13,6 +13,7 @@
       "restart": true,
       "sourceMaps": true,
       "skipFiles": ["<node_internals>/**"]
+      // "outputCapture": "std"
     }
   ]
 }

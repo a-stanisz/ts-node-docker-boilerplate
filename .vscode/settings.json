@@ -1,3 +1,6 @@
 {
   "prettier.configPath": ".prettierrc.js"
+  // "debug.javascript.terminalOptions": {
+  //   "outputCapture": "console"
+  // }
 }
